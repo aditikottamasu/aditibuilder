@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello, Aditi</title>
+    <style>
+      :root {
+        color: #4a2540;
+        background: #fff8fb;
+        font-family: Georgia, serif;
+      }
+
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 15% 20%, #ffe0ee 0 5rem, transparent 5.1rem),
+          radial-gradient(circle at 85% 80%, #fce5a9 0 6rem, transparent 6.1rem),
+          #fff8fb;
+      }
+
+      main {
+        display: grid;
+        place-items: center;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.5rem, 8vw, 5.5rem);
+        font-weight: 500;
+        letter-spacing: -0.04em;
+      }
+
+      .flower {
+        position: relative;
+        width: 5rem;
+        height: 5rem;
+      }
+
+      .petal,
+      .flower::before,
+      .flower::after,
+      .petal::before {
+        position: absolute;
+        width: 2.3rem;
+        height: 3.2rem;
+        border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+        background: #f69abb;
+        content: "";
+      }
+
+      .petal { transform: translate(1.35rem, 0); }
+      .flower::before { transform: translate(2.7rem, 1.35rem) rotate(90deg); }
+      .flower::after { transform: translate(0, 1.35rem) rotate(-90deg); }
+      .petal::before { transform: translate(0, 2.7rem) rotate(180deg); }
+
+      .center {
+        position: absolute;
+        inset: 1.75rem;
+        z-index: 1;
+        border-radius: 50%;
+        background: #f4bc4a;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="flower" aria-hidden="true">
+        <span class="petal"></span>
+        <span class="center"></span>
+      </div>
+      <h1>Hello, Aditi</h1>
+    </main>
+  </body>
+</html>
