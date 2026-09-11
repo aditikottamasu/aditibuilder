@@ -102,7 +102,8 @@
         width: var(--size);
         aspect-ratio: 1;
         transform: rotate(var(--rotation));
-        animation: sway var(--duration) ease-in-out infinite alternate;
+        transform-origin: 50% 75%;
+        animation: flower-sway var(--duration) ease-in-out infinite alternate;
         filter: drop-shadow(0 9px 7px rgba(65, 94, 64, .12));
       }
       .flower::before, .flower::after, .flower span::before, .flower span::after {
@@ -131,7 +132,14 @@
       .f3 { --size: 176px; --petal: #b9d6b0; --center: #6f9969; --rotation: 35deg; --duration: 3.9s; bottom: -57px; right: 5%; }
       .f4 { --size: 82px; --petal: #caa7d2; --center: #efca63; --rotation: -22deg; --duration: 4.8s; bottom: 18%; left: 9%; }
 
-      .sprig { position: absolute; width: 160px; height: 260px; opacity: .85; }
+      .sprig {
+        position: absolute;
+        width: 160px;
+        height: 260px;
+        opacity: .85;
+        transform-origin: bottom center;
+        animation: sprig-sway 5.4s ease-in-out infinite alternate;
+      }
       .sprig::before {
         position: absolute; bottom: 0; left: 50%; width: 3px; height: 100%;
         border-radius: 3px; background: #71966b; content: ""; transform: rotate(-29deg);
@@ -143,11 +151,74 @@
       .sprig span { bottom: 54px; left: 38px; transform: rotate(26deg); }
       .sprig span::before { bottom: 55px; left: 45px; transform: rotate(-43deg); }
       .sprig span::after { bottom: 108px; left: 27px; transform: rotate(31deg); }
-      .left-sprig { bottom: -120px; left: -26px; transform: rotate(12deg); }
-      .right-sprig { top: -118px; right: -38px; transform: rotate(182deg); }
+      .left-sprig { --sprig-rotation: 12deg; bottom: -120px; left: -26px; }
+      .right-sprig { --sprig-rotation: 182deg; top: -118px; right: -38px; animation-delay: -2.6s; }
 
-      @keyframes sway { to { transform: rotate(calc(var(--rotation) + 8deg)) translateY(-7px); } }
-      @media (prefers-reduced-motion: reduce) { .flower { animation: none; } }
+      .bug {
+        position: absolute;
+        z-index: 2;
+        width: 30px;
+        height: 24px;
+        color: var(--bug, #bd7843);
+        filter: drop-shadow(0 4px 3px rgba(63, 89, 57, .13));
+        transform-origin: center;
+        animation: bug-drift var(--bug-duration, 6s) ease-in-out infinite alternate;
+      }
+      .bug::before {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        width: 17px;
+        height: 13px;
+        border: 2px solid currentColor;
+        border-radius: 55% 45% 52% 48%;
+        background: var(--bug-body, #f4c764);
+        box-shadow: inset -5px 0 0 rgba(255, 255, 255, .22);
+        content: "";
+      }
+      .bug::after {
+        position: absolute;
+        top: 9px;
+        left: 3px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+        content: "";
+      }
+      .bug span, .bug span::after {
+        position: absolute;
+        top: 4px;
+        left: 5px;
+        width: 11px;
+        height: 8px;
+        border-top: 1.5px solid currentColor;
+        border-radius: 70% 100% 0 0;
+        content: "";
+        transform-origin: 15% 100%;
+        animation: antennae 1.5s ease-in-out infinite alternate;
+      }
+      .bug span::after { top: -1px; left: 2px; transform: scaleX(-1) rotate(-8deg); animation-delay: -.55s; }
+      .bug-one { --bug: #8d6043; --bug-body: #f4c764; --bug-duration: 5.7s; top: 13%; left: 18%; }
+      .bug-two { --bug: #a9596a; --bug-body: #eea0ad; --bug-duration: 6.4s; bottom: 15%; right: 19%; animation-delay: -2.8s; }
+      .bug-three { --bug: #557b62; --bug-body: #b9d6b0; --bug-duration: 5.2s; top: 31%; right: 18%; animation-delay: -1.4s; }
+
+      @keyframes flower-sway {
+        from { transform: rotate(calc(var(--rotation) - 3deg)) translateY(2px); }
+        to { transform: rotate(calc(var(--rotation) + 5deg)) translateY(-5px); }
+      }
+      @keyframes sprig-sway {
+        from { transform: rotate(calc(var(--sprig-rotation) - 3deg)); }
+        to { transform: rotate(calc(var(--sprig-rotation) + 3deg)); }
+      }
+      @keyframes bug-drift {
+        from { transform: translate(-4px, 3px) rotate(-5deg); }
+        to { transform: translate(6px, -5px) rotate(5deg); }
+      }
+      @keyframes antennae { to { transform: rotate(16deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        .flower, .sprig, .bug, .bug span, .bug span::after { animation: none; }
+      }
       @media (max-width: 560px) { .f2 { right: -24px; } .f4 { left: -26px; } }
     </style>
   </head>
@@ -159,6 +230,9 @@
       <div class="flower f2" aria-hidden="true"><span></span><i></i></div>
       <div class="flower f3" aria-hidden="true"><span></span><i></i></div>
       <div class="flower f4" aria-hidden="true"><span></span><i></i></div>
+      <div class="bug bug-one" aria-hidden="true"><span></span></div>
+      <div class="bug bug-two" aria-hidden="true"><span></span></div>
+      <div class="bug bug-three" aria-hidden="true"><span></span></div>
       <section class="card" aria-labelledby="welcome-title">
         <p class="eyebrow">A little garden, just for you</p>
         <h1 id="welcome-title">Hello, <em>Aditi</em></h1>
