@@ -271,6 +271,22 @@
       .bug-two { --bug-duration: 6.4s; bottom: 15%; right: 19%; animation-delay: -2.8s; }
       .bug-three { --ladybug-body: #ef9a61; --bug-duration: 5.2s; top: 31%; right: 18%; animation-delay: -1.4s; }
 
+      .note {
+        position: absolute;
+        z-index: 2;
+        color: #171717;
+        font-family: Arial, sans-serif;
+        font-size: 2rem;
+        line-height: 1;
+        text-shadow: 0 3px 3px rgba(63, 89, 57, .13);
+        transform-origin: center;
+        animation: note-drift var(--note-duration, 5s) ease-in-out infinite alternate;
+      }
+      .note-one { --note-duration: 5.5s; top: 17%; right: 28%; transform: rotate(-10deg); }
+      .note-two { --note-duration: 6.1s; bottom: 19%; left: 20%; animation-delay: -2.2s; transform: rotate(8deg); }
+      .note-three { --note-duration: 5.8s; top: 39%; left: 12%; animation-delay: -1.1s; transform: rotate(-6deg); }
+      .note-four { --note-duration: 6.5s; bottom: 11%; right: 29%; animation-delay: -3.4s; transform: rotate(11deg); }
+
       @keyframes flower-sway {
         from { transform: rotate(calc(var(--rotation) - 3deg)) translateY(2px); }
         to { transform: rotate(calc(var(--rotation) + 5deg)) translateY(-5px); }
@@ -283,9 +299,13 @@
         from { transform: translate(-4px, 3px) rotate(-5deg); }
         to { transform: translate(6px, -5px) rotate(5deg); }
       }
+      @keyframes note-drift {
+        from { translate: -3px 2px; }
+        to { translate: 4px -5px; }
+      }
       @keyframes antennae { to { transform: rotate(16deg); } }
       @media (prefers-reduced-motion: reduce) {
-        .flower, .sprig, .bug, .ladybug span, .ladybug span::after, .caterpillar span, .caterpillar span::after { animation: none; }
+        .flower, .sprig, .bug, .note, .ladybug span, .ladybug span::after, .caterpillar span, .caterpillar span::after { animation: none; }
       }
       @media (max-width: 560px) { .f2 { right: -24px; } .f4 { left: -26px; } }
     </style>
@@ -301,6 +321,10 @@
       <div class="bug ladybug bug-one" aria-hidden="true"><span></span></div>
       <div class="bug caterpillar bug-two" aria-hidden="true"><span></span></div>
       <div class="bug ladybug bug-three" aria-hidden="true"><span></span></div>
+      <div class="note note-one" aria-hidden="true">&#9834;</div>
+      <div class="note note-two" aria-hidden="true">&#9833;</div>
+      <div class="note note-three" aria-hidden="true">&#9834;</div>
+      <div class="note note-four" aria-hidden="true">&#9833;</div>
       <section class="card" aria-labelledby="welcome-title">
         <p class="eyebrow">A little garden, just for you</p>
         <h1 id="welcome-title">Hello, <em>Aditi</em></h1>
