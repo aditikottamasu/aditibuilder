@@ -275,12 +275,18 @@
         position: absolute;
         z-index: 2;
         color: #171717;
-        font-family: Arial, sans-serif;
-        font-size: 2rem;
-        line-height: 1;
+        width: 44px;
+        height: 54px;
         text-shadow: 0 3px 3px rgba(63, 89, 57, .13);
         transform-origin: center;
         animation: note-drift var(--note-duration, 5s) ease-in-out infinite alternate;
+      }
+      .note svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        fill: currentColor;
       }
       .note-one { --note-duration: 5.5s; top: 17%; right: 28%; transform: rotate(-10deg); }
       .note-two { --note-duration: 6.1s; bottom: 19%; left: 20%; animation-delay: -2.2s; transform: rotate(8deg); }
@@ -321,10 +327,18 @@
       <div class="bug ladybug bug-one" aria-hidden="true"><span></span></div>
       <div class="bug caterpillar bug-two" aria-hidden="true"><span></span></div>
       <div class="bug ladybug bug-three" aria-hidden="true"><span></span></div>
-      <div class="note note-one" aria-hidden="true">&#9834;</div>
-      <div class="note note-two" aria-hidden="true">&#9833;</div>
-      <div class="note note-three" aria-hidden="true">&#9834;</div>
-      <div class="note note-four" aria-hidden="true">&#9833;</div>
+      <div class="note note-one" aria-hidden="true">
+        <svg viewBox="0 0 44 54"><path d="M15 43V12h3v29zm22-8V5h3v30zM16 11 39 3v9l-23 8z"/><ellipse cx="9" cy="44" rx="9" ry="5.5" transform="rotate(-18 9 44)"/><ellipse cx="31" cy="36" rx="9" ry="5.5" transform="rotate(-18 31 36)"/></svg>
+      </div>
+      <div class="note note-two" aria-hidden="true">
+        <svg viewBox="0 0 44 54"><path d="M15 43V12h3v29zm22-8V5h3v30zM16 11 39 3v9l-23 8z"/><ellipse cx="9" cy="44" rx="9" ry="5.5" transform="rotate(-18 9 44)"/><ellipse cx="31" cy="36" rx="9" ry="5.5" transform="rotate(-18 31 36)"/></svg>
+      </div>
+      <div class="note note-three" aria-hidden="true">
+        <svg viewBox="0 0 44 54"><path d="M15 43V12h3v29zm22-8V5h3v30zM16 11 39 3v9l-23 8z"/><ellipse cx="9" cy="44" rx="9" ry="5.5" transform="rotate(-18 9 44)"/><ellipse cx="31" cy="36" rx="9" ry="5.5" transform="rotate(-18 31 36)"/></svg>
+      </div>
+      <div class="note note-four" aria-hidden="true">
+        <svg viewBox="0 0 44 54"><path d="M15 43V12h3v29zm22-8V5h3v30zM16 11 39 3v9l-23 8z"/><ellipse cx="9" cy="44" rx="9" ry="5.5" transform="rotate(-18 9 44)"/><ellipse cx="31" cy="36" rx="9" ry="5.5" transform="rotate(-18 31 36)"/></svg>
+      </div>
       <section class="card" aria-labelledby="welcome-title">
         <p class="eyebrow">A little garden, just for you</p>
         <h1 id="welcome-title">Hello, <em>Aditi</em></h1>
